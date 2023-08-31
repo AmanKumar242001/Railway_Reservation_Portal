@@ -1,0 +1,70 @@
+<link rel="stylesheet" href="style/logout.css">
+<style>
+  form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+  }
+
+  button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  button:hover {
+    background-color: #3e8e41;
+  }
+
+  input[type="text"],
+  input[type="password"] {
+    width: 200px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+  }
+
+  input[type="text"]:focus,
+  input[type="password"]:focus {
+    outline: none;
+    border-color: #4CAF50;
+  }
+
+  input::placeholder {
+    color: #ccc;
+  }
+</style>
+<body>
+  <div id="logoutContainer">
+    <form action="/logout" method="post">
+      <button type="submit" name="logout">Logout</button>
+    </form>
+  </div>
+  <form action="/showticket" method="post">
+    <!-- <label>Username :</label>
+    <input type="text" name="username" placeholder="username" /><br /><br />
+    <label>Password:</label>
+    <input type="password" name="password" placeholder="password" /><br /><br /> -->
+    <!-- <label>Train No :</label>
+    <input
+      id="train_no"
+      type="text"
+      name="train_no"
+      placeholder="train no"
+    /><br /><br />
+    <label>Date :</label>
+    <input id="date" type="text" name="date" placeholder="date" /><br /><br /> -->
+    <button type="submit" name="showticket">Show Ticket</button>
+  </form>
+</body>

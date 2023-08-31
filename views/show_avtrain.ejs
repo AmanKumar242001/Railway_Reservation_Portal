@@ -1,0 +1,402 @@
+<!-- <!DOCTYPE html>
+<html>
+  <head>
+    <title>Trains</title>
+    <link rel="stylesheet" href="style/logout.css">
+    <style>
+      table {
+  font-family: Arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+th, td {
+  text-align: left;
+  padding: 12px;
+}
+
+th {
+  background-color: #a2bcca;
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+tr:nth-child(even) {
+  background-color: #f1f1f1;
+}
+
+tr:hover {
+  background-color: #e1e1e1;
+}
+
+tbody td:before {
+  content: attr(data-label);
+  float: left;
+  font-weight: bold;
+  margin-right: 10px;
+  text-transform: uppercase;
+}
+
+#additional{
+  margin-bottom: 10px;
+  position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+  
+}
+
+#additional input[type="submit"] {
+  background-color: #0077b6;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+#additional input[type="submit"]:hover {
+  background-color: #005d8f;
+}
+
+form  {
+  max-width: 400px;
+  margin:  auto;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+    </style>
+  </head>
+  <script> 
+    function buttonClick(e){
+      console.log(e.target)
+      let form = document.querySelector("#additional") 
+      e.target.disabled = true;
+      form.style.display = 'block';
+      let data = e.target.parentElement.parentElement.dataset
+      console.log(form.elements)
+      form.elements[0].value=data['train']
+      form.elements[1].value=new Date(data['date'].replace(/ GMT.*/,'')).toLocaleDateString('en-GB')      
+      form.elements[2].value=data['ac']
+      form.elements[3].value=data['sleeper']
+      form.elements[4].value=data['ac']
+      form.elements[5].value=data['sleeper']
+      form.onsubmit = () => {
+        alert('Train Releasing')
+      }
+      console.log(data)
+}
+  </script>
+  <body>
+    <div id="logoutContainer">
+      <form action="/logout" method="post">
+        <button type="submit" name="logout">Logout</button>
+      </form>
+    </div>
+    <form method="post" action="/release" id="additional" style="display:none">
+      <input name="train_no" placeholder="train_no" hidden style="display:none"/>
+      <input name="date"  placeholder="date" hidden style="display:none"/>
+      <input name="ac" type="number" placeholder="Ac Seats" hidden style="display:none"/>
+      <input name="sleeper" type="number"  placeholder="Sleeper Seats" hidden style="display:none"/>
+      <input name="ac_" placeholder="Ac Seats" type="number" hidden style="display:none"/><br>
+      <input name="sleeper_" placeholder="Sleeper Seats"  type="number" hidden style="display:none"/><br>
+      <input name="src" placeholder="Source" type="text" required/><br>
+      <input name="des" placeholder="Destination" type="text" required/><br>
+      <input type="submit" />
+    </form>
+    <table>
+      <thead>
+      <tr>
+        <th>Train No</th>
+        <th>Date</th>
+        <th>AC Available Seats</th>
+        <th>Sleeper Available Seats</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% for(var i=0; i<results.length; i++) {%>
+      <tr data-train="<%= results[i]['train_no'] %>" data-date="<%= results[i]['date'] %>" data-ac="<%= results[i]['ac_num'] %>" data-sleeper="<%= results[i]['sleeper_num'] %>" data-inactive="<%= results[i]['inactive'] %>">
+        
+        <td><%= results[i]['train_no'] %></td>
+        <td id="<%= i %>"></td>        
+        <td><%= results[i]['ac_num'] %></td>
+        <td><%= results[i]['sleeper_num'] %></td>
+      </tr>
+    </tbody>
+      <script>
+        document.getElementById("<%= i %>").innerHTML = `<%= results[i]['date'] %>`.slice(0,15);
+      </script>
+      <% } %>
+    </table>
+    <script>
+       let tr = document.querySelectorAll("table tbody tr");
+
+Array.from(tr).forEach(function(trArray) {
+let button = document.createElement("button");
+button.onclick = buttonClick;
+let td = document.createElement("td");
+button.innerText = "Release Train";
+console.log(trArray.dataset)
+let status=(trArray.dataset.inactive=='true');
+button.disabled=status;
+// button.className = "btn_buy";
+button.name = "release";
+td.append(button);
+trArray.append(td);
+});
+
+    </script>
+    
+  </body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Train Booking System</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      background-color: #f5f5f5;
+      background: url("train1.jpg") no-repeat center center fixed;
+      background-size: cover;
+    }
+
+    .container {
+      max-width: 1400px;
+      min-width: 1100px;
+      background-color: #fff;
+      border-radius: 4px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      padding: 20px;
+      margin-top: 30px;
+    }
+
+    .logout-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-color: #6c63ff;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      font-size: 16px;
+      border-radius: 4px;
+      transition: background-color 0.2s;
+    }
+
+    .logout-btn:hover {
+      background-color: #4b46e0;
+    }
+
+    table {
+      width: 100%;
+      margin-top: 20px;
+      border-collapse: collapse;
+    }
+
+    th,
+    td {
+      padding: 10px;
+      border-bottom: 1px solid #ccc;
+      text-align: left;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    button {
+      background-color: #6c63ff;
+      color: white;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+      font-size: 16px;
+    }
+
+    button:disabled {
+      background-color: #b0b0b0;
+      cursor: not-allowed;
+    }
+
+    button:hover {
+      background-color: #4b46e0;
+    }
+
+    .ticket-heading {
+      font-size: 24px;
+      font-weight: bold;
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    #additional {
+      display: none;
+      margin-top: 20px;
+    }
+
+    #additional input {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+      width: 100%;
+      margin-bottom: 10px;
+    }
+
+    #additional input[type="submit"] {
+      background-color: #4caf50;
+      color: white;
+      cursor: pointer;
+    }
+
+    #additional input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+    .table-heading {
+      background-color: #6c63ff;
+      color: white;
+      text-align: left;
+      padding: 10px;
+      
+    }
+
+    .show-table {
+      width: 100%;
+      margin-top: 20px;
+      border-collapse: collapse;
+      
+    }
+
+    .show-table th,
+    .show-table td {
+      padding: 10px;
+      border-bottom: 1px solid #ccc;
+      text-align: left;
+    }
+
+    .show-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .ticket-heading {
+      font-size: 24px;
+      font-weight: bold;
+      margin-top: 20px;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h2 class="ticket-heading">Train Releasing System</h2>
+    <div id="logoutContainer">
+      <form action="/logout" method="post">
+        <button class="logout-btn" type="submit" name="logout">Logout</button>
+      </form>
+    </div>
+
+    <form method="post" action="/release" id="additional">
+      <input name="train_no" placeholder="Train No" hidden />
+      <input name="date" placeholder="Date" hidden />
+      <input name="ac" type="number" placeholder="AC Seats" hidden />
+      <input name="sleeper" type="number" placeholder="Sleeper Seats" hidden />
+      <input name="ac_" placeholder="AC Seats" type="number" hidden />
+      <input name="sleeper_" placeholder="Sleeper Seats" type="number" hidden /><br>
+      <input name="src" placeholder="Source" type="text" required /><br>
+      <input name="des" placeholder="Destination" type="text" required /><br>
+      <input type="submit" value="Release Train" />
+    </form>
+
+    <table class="show-table">
+      <thead>
+        <tr class="table-heading">
+          <th>Train No</th>
+          <th>Date</th>
+          <th>AC Available Seats</th>
+          <th>Sleeper Available Seats</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% for(var i=0; i<results.length; i++) { %>
+        <tr data-train="<%= results[i]['train_no'] %>" data-date="<%= results[i]['date'] %>"
+          data-ac="<%= results[i]['ac_num'] %>" data-sleeper="<%= results[i]['sleeper_num'] %>"
+          data-inactive="<%= results[i]['inactive'] %>">
+          <td><%= results[i]['train_no'] %></td>
+          <td id="<%= i %>"></td>
+          <td><%= results[i]['ac_num'] %></td>
+          <td><%= results[i]['sleeper_num'] %></td>
+        </tr>
+        <script>
+          document.getElementById("<%= i %>").innerHTML = `<%= results[i]['date'] %>`.slice(0, 15);
+        </script>
+        <% } %>
+      </tbody>
+    </table>
+    <script>
+      function buttonClick(e) {
+        console.log(e.target)
+        let form = document.querySelector("#additional")
+        e.target.disabled = true;
+        form.style.display = 'block';
+        let data = e.target.parentElement.parentElement.dataset
+        console.log(form.elements)
+        form.elements[0].value = data['train']
+        form.elements[1].value = new Date(data['date'].replace(/ GMT.*/, '')).toLocaleDateString('en-GB')
+        form.elements[2].value = data['ac']
+        form.elements[3].value = data['sleeper']
+        form.elements[4].value = data['ac']
+        form.elements[5].value = data['sleeper']
+        form.onsubmit = () => {
+          alert('Train Releasing')
+        }
+        console.log(data)
+      }
+    </script>
+  </div>
+  <script>
+    let tr = document.querySelectorAll("table tbody tr");
+
+Array.from(tr).forEach(function(trArray) {
+let button = document.createElement("button");
+button.onclick = buttonClick;
+let td = document.createElement("td");
+button.innerText = "Release Train";
+console.log(trArray.dataset)
+let status=(trArray.dataset.inactive=='true');
+button.disabled=status;
+// button.className = "btn_buy";
+button.name = "release";
+td.append(button);
+trArray.append(td);
+});
+
+ </script>
+</body>
+
+</html>

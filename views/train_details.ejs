@@ -1,0 +1,213 @@
+<!-- <!DOCTYPE html>
+<html>
+  <head>
+    <title>Add Passengers</title>
+    <link rel="stylesheet" href="style/logout.css">
+    <style>
+      table {
+  border-collapse: collapse;
+  width: 100%;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+  border: 1px solid #ddd;
+}
+
+th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+    </style>
+  </head>
+  <body>
+    <div id="logoutContainer">
+      <form action="/logout" method="post">
+        <button type="submit" name="logout">Logout</button>
+      </form>
+    </div>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Gender</th>
+        <th>Coach No</th>
+        <th>Berth No</th>
+        <th>Pnr No</th>
+        <th>Source</th>
+        <th>Destination</th>
+      </tr>
+      <% for(result of results) { %>
+      <tr>
+        <td><%= result['name'] %></td>
+        <td><%= result['age'] %></td>
+        <td><%= result['gender'] %></td>
+        <td><%= result['coach_no'] %></td>
+        <td><%= result['berth_no'] %></td>      
+        <td><%= result['pnr_no'] %></td>
+        <td><%= result['source'] %></td>
+        <td><%= result['destination'] %></td>
+      </tr>
+      <% } %>
+    </table>
+  </body>
+</html> -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Passenger Information</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+      }
+
+      body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-height: 100vh;
+        background-color: #f5f5f5;
+        background: url("train1.jpg") no-repeat center center fixed;
+        background-size: cover;
+      }
+
+      .container {
+        max-width: 1200px;
+        min-width: 900px;
+        background-color: #fff;
+        border-radius: 4px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        padding: 20px;
+        margin-top: 30px;
+      }
+
+      .logout-btn {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: #6c63ff;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        font-size: 16px;
+        border-radius: 4px;
+        transition: background-color 0.2s;
+      }
+
+      .logout-btn:hover {
+        background-color: #4b46e0;
+      }
+
+      .table-heading {
+        background-color: #6c63ff;
+        color: white;
+        text-align: left;
+        padding: 10px;
+      }
+
+      .show-table {
+        width: 100%;
+        margin-top: 20px;
+        border-collapse: collapse;
+      }
+
+      .show-table th,
+      .show-table td {
+        padding: 10px;
+        border-bottom: 1px solid #ccc;
+        text-align: left;
+      }
+
+      .show-table tr:last-child td {
+        border-bottom: none;
+      }
+
+      .ticket-heading {
+        font-size: 24px;
+        font-weight: bold;
+        margin-top: 20px;
+        text-align: center;
+      }
+      .show-message {
+        text-align: center;
+        margin-top: 20px;
+        padding: 10px;
+        background-color: #f0f0f0;
+        color: #333;
+        border: 1px solid #ccc;
+        max-width: fit-content; /* Set the maximum width to fit the content */
+      }
+
+      .show-message p {
+        margin: 0;
+      }
+      .show-message {
+        display: block;
+        text-align: center;
+        margin-top: 20px;
+        padding: 10px;
+        background-color: #f0f0f0;
+        color: #333;
+        border: 1px solid #ccc;
+        max-width: fit-content;
+        /* Set the maximum width to fit the content */
+        margin: 0 auto;
+        margin-top: 20px; /* Add this to center the div horizontally */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2 class="ticket-heading">Ticket Details</h2>
+      <div id="logoutContainer">
+        <form action="/logout" method="post">
+          <button class="logout-btn" type="submit" name="logout">Logout</button>
+        </form>
+      </div>
+
+      <% if (message) { %>
+      <div class="show-message">
+        <p><%= message %></p>
+      </div>
+      <% } %> <% if (results && results.length > 0) { %>
+      <table class="show-table">
+        <tr class="table-heading">
+          <th>Name</th>
+          <th>Age</th>
+          <th>Gender</th>
+          <th>Coach No</th>
+          <th>Berth No</th>
+          <th>Pnr No</th>
+          <th>Source</th>
+          <th>Destination</th>
+        </tr>
+        <% for (result of results) { %>
+        <tr>
+          <td><%= result['name'] %></td>
+          <td><%= result['age'] %></td>
+          <td><%= result['gender'] %></td>
+          <td><%= result['coach_no'] %></td>
+          <td><%= result['berth_no'] %></td>
+          <td><%= result['pnr_no'] %></td>
+          <td><%= result['source'] %></td>
+          <td><%= result['destination'] %></td>
+        </tr>
+        <% } %>
+      </table>
+      <% } %>
+    </div>
+  </body>
+</html>

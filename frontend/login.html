@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <!-- <style>
+      form {
+        max-width: 500px;
+        margin: 100px auto;
+        padding: 40px;
+        background-color: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Style for the form heading */
+
+      /* Style for the labels */
+      label {
+        display: block;
+        margin-bottom: 16px;
+        font-weight: bold;
+        color: #666666;
+      }
+
+      /* Style for the input fields */
+      input[type="text"],
+      input[type="password"],
+      input[type="email"] {
+        width: 100%;
+        padding: 16px;
+        margin: 8px 0;
+        box-sizing: border-box;
+        border: none;
+        border-radius: 4px;
+        background-color: #f2f2f2;
+        color: #333333;
+        font-size: 16px;
+      }
+
+      input:focus {
+        outline: none;
+        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Style for the submit button */
+      button[type="submit"] {
+        background-color: #ff9900;
+        color: white;
+        padding: 16px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.2s;
+      }
+
+      button:hover {
+        background-color: #ffad33;
+      }
+
+      a {
+        display: block;
+        width: fit-content;
+        justify-content: center;
+        padding: 0.5px 24px;
+        margin: 30px auto;
+        text-align: center;
+        color: #ffffff;
+        text-decoration: none;
+        background-color: #ff9900;
+        border-radius: 4px;
+        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+        font-size: 16px;
+        transition: background-color 0.2s;
+      }
+
+      a:hover {
+        background-color: #ffad33;
+        text-decoration: none;
+      }
+      h3 {
+        text-align: center;
+        font-size: 20px;
+      }
+    </style> -->
+
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      /* Set the base font and background for the page */
+      body {
+        font-family: Arial, sans-serif;
+        background: url("train1.jpg") no-repeat center center fixed;
+        background-size: cover;
+      }
+
+      .m-t-lg {
+        margin-top: 26px; /* Adjust this value to control the top margin */
+      }
+
+      .or-login__separator {
+        /* Updated styles for the "Or" separator */
+        margin: 0.5rem 1rem;
+        color: rgb(19, 19, 19); /* Set the color to black */
+        font-size: 1rem; /* Set the font size a bit smaller */
+      }
+
+      .container__child.login__form {
+        margin: 0 auto;
+        border-radius: 10px; /* Add the border curvature radius directly to this class */
+      }
+
+      .container__child.or-login__container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .or-login__link {
+        color: #6c63ff;
+        font-size: 1.2rem;
+        font-weight: 600;
+        transition: color 0.2s;
+        text-decoration: underline;
+      }
+      .or-login__link:hover {
+        color: #4b46e0; /* Change the color on hover */
+      }
+
+      .m-t-lg.or-login__container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      /* Center the container vertically */
+      .login__container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh; /* Set the height to 100% of the viewport height */
+        background: url("train1.jpg") no-repeat center center fixed;
+        background-size: cover;
+      }
+      .submission {
+        margin-top: -5px auto; /* Adjust the top and bottom margin as needed */
+      }
+
+      /* Adjust the container__child class to center the form */
+
+      /* Style the login form container */
+      .login__content {
+        display: flex;
+        max-width: 800px;
+      }
+
+      .container__child {
+        flex: 1;
+        padding: 3rem;
+        background-color: #f2b50c; /* Add the desired color here, e.g., #f7f7f7 for a light gray */
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Added slight shadow */
+        display: flex;
+        flex-direction: column;
+        justify-content: center; /* Center content vertically */
+        margin-bottom: -5px; /* Remove border radius overlap */
+
+        /* Increase the height and width */
+        height: 500px;
+        width: 500px;
+      }
+
+      /* Style the headings */
+      h1.heading--primary {
+        font-size: 2.5rem;
+        color: #6c63ff;
+        margin-bottom: 2rem; /* Increase margin between the headings */
+        text-align: center;
+        margin-top: -2rem; /* Move the heading closer to the upper margin */
+        line-height: 1.2; /* Adjust line height for better vertical alignment */
+      }
+
+      h2.heading--secondary {
+        font-size: 1.5rem;
+        color: #666666;
+        text-align: center;
+        margin-top: 3rem; /* Increase margin between the headings */
+      }
+
+      /* Style the form elements */
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+
+      label {
+        display: block;
+        font-weight: bold;
+        color: #333333;
+        margin-bottom: 0.5rem;
+      }
+
+      .form-control {
+        width: 100%;
+        padding: 1rem;
+        border: 1px solid #cccccc;
+        border-radius: 4px;
+        background-color: #f2f2f2;
+        color: #333333;
+        font-size: 1rem;
+        transition: border-color 0.3s;
+      }
+
+      .form-control:focus {
+        outline: none;
+        border-color: #6c63ff;
+      }
+
+      /* Style the submit button */
+      button.btn--form {
+        width: 100%;
+        padding: 1rem;
+        font-size: 1rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        color: #ffffff;
+        background: #6c63ff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.2s;
+      }
+
+      button.btn--form:hover {
+        background: #4b46e0;
+      }
+
+      /* Style the login link */
+      a.login__link {
+        display: inline-block;
+        margin-top: 1rem;
+        text-align: center;
+        color: #6c63ff;
+        text-decoration: none;
+        font-size: 1rem;
+      }
+
+      a.login__link:hover {
+        color: #4b46e0;
+      }
+
+      /* Additional styles to enhance the appearance */
+
+      /* Style the form headings */
+      h1.heading--primary {
+        font-size: 2.5rem;
+        color: #6c63ff;
+        margin-bottom: 1rem;
+        text-align: center;
+      }
+
+      h2.heading--secondary {
+        font-size: 1.5rem;
+        color: #666666;
+        text-align: center;
+      }
+
+      /* Style the form fields on smaller screens */
+      @media (max-width: 600px) {
+        .form-control,
+        button.btn--form,
+        a.login__link {
+          font-size: 0.9rem;
+          padding: 0.8rem;
+        }
+
+        h1.heading--primary {
+          font-size: 2rem;
+        }
+
+        h2.heading--secondary {
+          font-size: 1.2rem;
+        }
+      }
+
+      /* Style the form on even smaller screens */
+      @media (max-width: 400px) {
+        .form-control,
+        button.btn--form,
+        a.login__link {
+          font-size: 0.8rem;
+          padding: 0.7rem;
+        }
+
+        h1.heading--primary {
+          font-size: 1.8rem;
+        }
+
+        h2.heading--secondary {
+          font-size: 1rem;
+        }
+      }
+      .form-control {
+        /* Existing styles... */
+        border: 1px solid #cccccc;
+        border-radius: 4px;
+        background-color: #f2f2f2;
+        color: #333333;
+        font-size: 1rem;
+        transition: border-color 0.3s, box-shadow 0.3s; /* Added transition for box-shadow */
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- --------------------------- -->
+    <div class="login__container">
+      <div class="login__content">
+        <div class="container__child login__form">
+          <form id="submission">
+            <div class="form-group">
+              <label for="username">Username</label>
+              <input
+                class="form-control"
+                type="text"
+                name="username"
+                id="username"
+                placeholder="username"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input
+                class="form-control"
+                type="password"
+                name="password"
+                id="password"
+                placeholder="password"
+                required
+              />
+            </div>
+            <div class="m-t-lg">
+              <ul class="list-inline">
+                <button class="btn btn--form" type="submit" name="submit">
+                  Login
+                </button>
+              </ul>
+            </div>
+          </form>
+          <div class="m-t-lg or-login__container">
+            <div class="or-login__separator">Or</div>
+            <a class="or-login__link" href="./signup.html">Signup</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ----------------------------------- -->
+
+    <!-- <div id="registered"></div> -->
+    <!-- <form id="submission">
+      <label>Username :</label>
+      <input
+        type="text"
+        name="username"
+        placeholder="username"
+        required
+      /><br /><br />
+      <label>Password:</label>
+      <input
+        type="password"
+        name="password"
+        placeholder="password"
+        required
+      /><br /><br />
+      <button type="submit" name="submit">Login</button>
+    </form>
+    <h3>Or</h3>
+    <a href="./signup.html"><h3>Signup</h3></a> -->
+
+    <!-- <body> -->
+    <!-- <h1 class="text-sm">Hello World!</h1> -->
+    <!-- <section class="bg-gray-50 dark:bg-gray-900">
+      <div id="registered" class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+          <div class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+              <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
+                  <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
+                      Log in to your account
+                  </h1>
+                  <form class="space-y-4 md:space-y-6" action="/login"  method="post">
+                      <div>
+                          <label for="username" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Username</label>
+                          <input type="text" name="username" id="username" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="username" required="">
+                      </div>
+                      <div>
+                          <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
+                          <input type="password" name="password" id="password" placeholder="••••••••" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required="">
+                      </div>
+                      <div class="flex items-center justify-between">
+                          <div class="flex items-start">
+                              <div class="flex items-center h-5">
+                                <input id="remember" aria-describedby="remember" type="checkbox" class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800" required="">
+                              </div>
+                              <div class="ml-3 text-sm">
+                                <label for="remember" class="text-gray-500 dark:text-gray-300">Remember me</label>
+                              </div>
+                          </div>
+                           <a href="#" class="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500">Forgot password?</a> -->
+    <!-- </div>
+                      <button type="submit" name="submit" class="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Log in</button> -->
+    <!-- <p class="text-sm font-light text-gray-500 dark:text-gray-400">
+                          Don’t have an account yet? <a href="#" class="font-medium text-primary-600 hover:underline dark:text-primary-500">Sign up</a>
+                      </p> -->
+    <!-- </form>
+              </div>
+          </div>
+      </div>
+    </section> -->
+
+    <!-- <script>
+      if (window.location.href.search("registered") != -1) {
+        document.querySelector("#registered").innerHTML =
+          "You are already registered. Stop bothering us else we will enter your house.";
+        // alert('You are already registered. Stop bothering us else we will enter your house.')
+      }
+    </script> -->
+
+    <script>
+      function getQueryParam(name) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(name);
+      }
+      const registered = getQueryParam("registered");
+      if (registered === "true") {
+        alert("User successfully registered. You can now login.");
+      }
+    </script>
+    <script>
+      let form = document.querySelector("#submission");
+      let inputs = form.querySelectorAll("input");
+      form.onsubmit = (e) => {
+        e.preventDefault();
+        let data = {};
+        for (input of inputs) {
+          data[input.getAttribute("name")] = input.value;
+        }
+
+        const xhr = new XMLHttpRequest();
+        xhr.open("POST", "/login");
+        xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+        xhr.onload = function () {
+          if (xhr.status === 400) {
+            const response = JSON.parse(xhr.responseText);
+            // message.innerHTML = `<p class="error">${response.error}</p>`;
+            // message.style.display = response.error ? "block" : "none";
+            // message.style.color = response.error ? "red" : "green";
+            alert(response.error);
+          } else if (xhr.status === 302) {
+            window.location.href = "/avtrain";
+          } else if (xhr.status === 200) {
+            window.location.href = "/srcdes";
+          }
+        };
+        xhr.send(JSON.stringify(data));
+      };
+    </script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

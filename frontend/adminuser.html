@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Add Admin User</title>
+    <!-- <link rel="stylesheet" href="style/logout.css" /> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <style>
+      .container {
+        margin: 50px auto;
+        width: 60%;
+      }
+
+      /* Style the form */
+      form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      /* Style the labels */
+      label {
+        font-size: 18px;
+        margin-bottom: 10px;
+        display: inline-block;
+      }
+
+      /* Style the inputs */
+      input {
+        padding: 8px;
+        font-size: 14px;
+        border-radius: 5px;
+        border: none;
+        box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.3);
+        margin-bottom: 20px;
+        display: inline-block;
+        width: 100%;
+        max-width: 250px;
+      }
+
+      /* Style the button */
+      button {
+        background-color: #2196f3;
+        color: white;
+        padding: 10px 20px;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        margin-top: 20px;
+      }
+
+      h2 {
+        text-align: center;
+        color: #0077cc;
+        margin-top: 40px;
+      }
+
+      button:hover {
+        background-color: #0d8bf2;
+      }
+
+      /* Style the results div */
+      #results {
+        margin: 50px;
+        font-size: 20px;
+        font-weight: bold;
+      }
+
+      #formmessage {
+        display: none;
+        margin-top: 10px;
+        padding: 10px;
+        background-color: #f0f0f0;
+        color: #333;
+        border: 1px solid #ccc;
+        max-width: fit-content; /* Set the maximum width to fit the content */
+        margin-left: auto; /* Horizontally center the element */
+        margin-right: auto; /* Horizontally center the element */
+      }
+
+      #formmessage p {
+        margin: 0;
+      }
+
+      #formmessage .error {
+        color: red;
+      }
+
+      #formmessage .success {
+        color: green;
+      }
+    </style> -->
+
+    <!-- <style>
+      /* Global styles */
+      * {
+          box-sizing: border-box;
+          margin: 0;
+          padding: 0;
+          font-family: Arial, sans-serif;
+      }
+
+      body {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          min-height: 100vh;
+          background-color: #f5f5f5;
+      }
+
+      /* Logout container styles */
+      #logoutContainer {
+          position: fixed;
+          top: 0;
+          right: 0;
+          padding: 10px;
+          z-index: 9999;
+      }
+
+      #logoutContainer form {
+          margin: 0;
+      }
+
+      #logoutContainer button {
+          background-color: #6c63ff;
+          color: white;
+          border: none;
+          padding: 10px 20px;
+          cursor: pointer;
+          font-size: 16px;
+          border-radius: 4px;
+          transition: background-color 0.2s;
+      }
+
+      #logoutContainer button:hover {
+          background-color: #4b46e0;
+      }
+
+      /* Container styles */
+      .container {
+          max-width: 600px;
+          background-color: #fff;
+          border-radius: 4px;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+          padding: 20px;
+          margin-top: 30px;
+      }
+
+      .container h2 {
+          text-align: center;
+          color: #0077cc;
+          margin-bottom: 20px;
+      }
+
+      .container form {
+          display: flex;
+          flex-direction: column;
+      }
+
+      .container label {
+          font-size: 18px;
+          color: #333;
+          margin-bottom: 10px;
+      }
+
+      .container input[type="text"],
+      .container input[type="number"] {
+          padding: 10px;
+          border-radius: 4px;
+          border: 1px solid #ccc;
+          font-size: 16px;
+          margin-bottom: 20px;
+          outline: none;
+      }
+
+      .container button[type="submit"] {
+          background-color: #6c63ff;
+          color: #fff;
+          font-size: 18px;
+          padding: 10px 20px;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+          transition: background-color 0.3s ease;
+      }
+
+      .container button[type="submit"]:hover {
+          background-color: #4b46e0;
+      }
+  </style> -->
+
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+      }
+
+      body {
+        display: flex;
+        height: 100vh;
+        justify-content: center;
+        align-items: center;
+        background: url("train1.jpg") no-repeat center center fixed;
+        background-size: cover;
+      }
+      .container {
+        width: 100%;
+        max-width: 650px;
+        background: rgb(158, 133, 24);
+        padding: 28px;
+        margin: 0 28px;
+        border-radius: 10px;
+        box-shadow: inset -2px 2px 2px white;
+      }
+      .form-title {
+        font-size: 26px;
+        font-weight: 600;
+        text-align: center;
+        padding-bottom: 6px;
+        color: white;
+        text-shadow: 2px 2px 2px black;
+        border-bottom: solid 1px white;
+      }
+      .main-user-info {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding: 20px 0;
+      }
+      .user-input-box:nth-child(2n) {
+        justify-content: end;
+      }
+
+      .user-input-box {
+        display: flex;
+        flex-wrap: wrap;
+        width: 50%;
+        padding-bottom: 15px;
+      }
+      .user-input-box label {
+        width: 95%;
+        color: white;
+        font-size: 20px;
+        font-weight: 400;
+        margin: 5px 0;
+      }
+      .user-input-box input {
+        height: 40px;
+        width: 95%;
+        border-radius: 7px;
+        outline: none;
+        border: 1px solid grey;
+        padding: 0 10px;
+      }
+      .form-submit-btn input {
+        cursor: pointer;
+      }
+      .form-submit-btn input {
+        display: block;
+        width: 100%;
+        margin-top: 10px;
+        font-size: 20px;
+        padding: 10px;
+        border: none;
+        border-radius: 3px;
+        color: rgb(209, 209, 209);
+        background: rgba(63, 114, 76, 0.7);
+      }
+      .form-submit-btn input:hover {
+        background: rgba(56, 204, 93, 0.7);
+        color: rgb(255, 255, 255);
+      }
+      .form-submit-btn {
+        margin-top: 20px;
+        text-align: center;
+      }
+      .btn.btn--form {
+        display: inline-block;
+        padding: 1rem 2rem;
+        font-size: 1rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        color: hwb(0 4% 96%);
+        /* background: #6c63ff; */
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.2s;
+      }
+
+      .btn.btn--form:hover {
+        background: #4b46e0;
+      }
+
+      .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 9999; /* Ensure it's above other elements */
+        background-color: #6c63ff;
+        padding: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center; /* Add this to separate links and logout button */
+      }
+
+      .navbar a {
+        color: white;
+        text-decoration: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        border-radius: 4px;
+        transition: background-color 0.2s;
+      }
+
+      .navbar a:hover {
+        background-color: #4b46e0;
+      }
+
+      /* Style the logout button */
+      #logoutContainer {
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        z-index: 9999;
+      }
+
+      #logoutContainer form {
+        margin: 0;
+      }
+
+      #logoutContainer button {
+        background-color: #6c63ff;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        font-size: 16px;
+        border-radius: 4px;
+        transition: background-color 0.2s;
+      }
+
+      #logoutContainer button:hover {
+        background-color: #4b46e0;
+      }
+
+      @media (max-width: 600px) {
+        .container {
+          min-width: 280px;
+        }
+        .user-input-box {
+          margin-bottom: 12px;
+          width: 100%;
+        }
+        .user-input-box:nth-child(2n) {
+          justify-content: space-between;
+        }
+        .main-user-info {
+          max-height: 380px;
+          overflow: auto;
+        }
+        .main-user-info::-webkit-scrollbar {
+          width: 0;
+        }
+      }
+      #formmessage {
+        text-align: center;
+        margin-top: 20px;
+      }
+
+      #formmessage p {
+        font-size: 18px;
+        color: #4b46e0;
+        background-color: #f0f7ff;
+        padding: 10px;
+        border-radius: 4px;
+        box-shadow: 0 0 5px rgba(75, 70, 224, 0.3);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="logoutContainer">
+      <form action="/logout" method="post">
+        <button type="submit" name="logout">Logout</button>
+      </form>
+    </div>
+    <!-- <div class="container">
+      <h2>Add Passengers</h2>
+      <form id="submission">
+        <label>Passenger Name :</label>
+        <input
+          type="text"
+          name="name"
+          placeholder="name"
+          required
+        /><br /><br />
+        <label>Age :</label>
+        <input
+          type="number"
+          name="age"
+          placeholder="age"
+          required
+        /><br /><br />
+        <label>Gender :</label>
+        <input
+          type="text"
+          name="gender"
+          placeholder="gender"
+          required
+        /><br /><br />
+        <button type="submit" name="addpass">Add Passenger</button>
+      </form>
+      <div id="formmessage"></div>
+    </div> -->
+
+    <div class="container">
+      <h1 class="form-title">Add Admin User</h1>
+      <form id="submission" onsubmit="return validateForm()">
+        <div class="main-user-info">
+          <div class="user-input-box">
+            <label>Username</label>
+            <input
+              type="text"
+              name="username"
+              placeholder="Username"
+              required
+            />
+          </div>
+          <div class="user-input-box">
+            <label>Password</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Password"
+              required
+            />
+          </div>
+        </div>
+        <div class="form-submit-btn">
+          <button
+            class="btn btn--form"
+            id="additional"
+            type="addpass"
+            name="bookuser"
+          >
+            Register
+          </button>
+        </div>
+      </form>
+      <div id="formmessage"></div>
+    </div>
+  </body>
+  <script>
+    function validateForm() {
+      var passwordField = document.getElementById("password");
+      if (passwordField.value.length < 5) {
+        alert("Password must be at least 5 characters long.");
+        passwordField.focus();
+        return false;
+      }
+      return true;
+    }
+  </script>
+  <script>
+    let form = document.querySelector("#submission");
+    let div = document.querySelector("#results");
+    let inputs = form.querySelectorAll("input");
+    let message = document.querySelector("#formmessage");
+
+    // form.onsubmit = (e) => {
+    //   e.preventDefault();
+    //   let data = {};
+    //   for (input of inputs) {
+    //     data[input.getAttribute("name")] = input.value;
+    //   }
+    //   let ajax = new XMLHttpRequest();
+    //   ajax.open("POST", "/addpass", false);
+    //   console.log("dta is ");
+    //   console.log(JSON.stringify(data));
+    //   ajax.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    //   ajax.send(JSON.stringify(data));
+    //   console.log(ajax.responseText);
+    //   let text = undefined;
+    //   if (ajax.status == 400) {
+    //     alert("PNR is not generated");
+    //     // div.appendChild(text);
+    //   } else {
+    //     // div.innerHTML = "";
+    //     // text = document.createTextNode("Passanger Added");
+    //     alert("Passenger Added");
+    //   }
+    // };
+    form.onsubmit = async (e) => {
+      e.preventDefault();
+      let data = {};
+      for (input of inputs) {
+        data[input.getAttribute("name")] = input.value;
+      }
+
+      if (!validateForm()) {
+        return false;
+      }
+
+      const xhr = new XMLHttpRequest();
+      xhr.open("POST", "/adminuser");
+      xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+      xhr.onload = await function () {
+        if (xhr.status === 400) {
+          const response = JSON.parse(xhr.responseText);
+          message.innerHTML = `<p class="error">${response.error}</p>`;
+          message.style.display = response.error ? "block" : "none";
+          message.style.color = response.error ? "red" : "green";
+          // alert(response.error);
+        } else {
+          const response = JSON.parse(xhr.responseText);
+          message.innerHTML = `<p class="success">${response.message}</p>`;
+          message.style.display = response.message ? "block" : "none";
+          message.style.color = response.message ? "green" : "red";
+          // alert(response);
+        }
+      };
+      xhr.send(JSON.stringify(data));
+    };
+  </script>
+</html>

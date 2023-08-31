@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <!-- <link rel="stylesheet" href="style/logout.css" /> -->
+    <title>Sign Up</title>
+
+    <!-- <style>
+      form {
+        max-width: 500px;
+        margin: 0 auto;
+        padding: 40px;
+        background-color: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Style for the form heading */
+      h2 {
+        font-size: 32px;
+        text-align: center;
+        margin-bottom: 40px;
+        color: #333333;
+      }
+
+      h3 {
+        text-align: center;
+        font-size: 20px;
+      }
+
+      /* Style for the labels */
+      label {
+        display: block;
+        margin-bottom: 16px;
+        font-weight: bold;
+        color: #666666;
+      }
+
+      /* Style for the input fields */
+      input[type="text"],
+      input[type="password"],
+      input[type="email"] {
+        width: 100%;
+        padding: 16px;
+        margin: 8px 0;
+        box-sizing: border-box;
+        border: none;
+        border-radius: 4px;
+        background-color: #f2f2f2;
+        color: #333333;
+        font-size: 16px;
+      }
+
+      input:focus {
+        outline: none;
+        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Style for the submit button */
+      button[type="submit"] {
+        background-color: #ff9900;
+        color: white;
+        padding: 16px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.2s;
+      }
+
+      button:hover {
+        background-color: #ffad33;
+      }
+
+      /* Style for the login link */
+      a {
+        display: block;
+        width: fit-content;
+        justify-content: center;
+        padding: 0.5px 24px;
+        margin: 30px auto;
+        text-align: center;
+        color: #ffffff;
+        text-decoration: none;
+        background-color: #ff9900;
+        border-radius: 4px;
+        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+        font-size: 16px;
+        transition: background-color 0.2s;
+      }
+
+      a:hover {
+        background-color: #ffad33;
+        text-decoration: none;
+      }
+    </style> -->
+
+    <!-- <style>
+      body {
+        font: 100% / 1.414 "Open Sans", "Roboto", arial, sans-serif;
+        background: #e9e9e9;
+      }
+
+      a,
+      [type="submit"] {
+        transition: all 0.25s ease-in;
+      }
+
+      .signup__container {
+        position: absolute;
+        top: 50%;
+        right: 0;
+        left: 0;
+        margin-right: auto;
+        margin-left: auto;
+        transform: translateY(-50%);
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 800px; /* Use pixels instead of (800px) */
+        height: 480px; /* Use pixels instead of (480px) */
+        border-radius: 3px; /* Use pixels instead of (3px) */
+        box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.25); /* Correct box-shadow syntax */
+      }
+      .signup__overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.76);
+      }
+      .container__child {
+        width: 50%;
+        height: 100%;
+        color: #fff;
+      }
+      .signup__thumbnail {
+        position: relative;
+        padding: 2rem;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        background: url(http://ultraimg.com/images/spectre-login.jpg);
+        background-repeat: no-repeat;
+        background-position: top center;
+        background-size: cover;
+      }
+      .thumbnail__logo,
+      .thumbnail__content,
+      .thumbnail__links {
+        position: relative;
+        z-index: 2;
+      }
+      .thumbnail__logo {
+        align-self: flex-start;
+      }
+      .logo__shape {
+        fill: #fff;
+      }
+      .logo__text {
+        display: inline-block;
+        font-size: 0.8rem;
+        font-weight: 700;
+        vertical-align: bottom;
+      }
+      .thumbnail__content {
+        align-self: center;
+      }
+      h1,
+      h2 {
+        font-weight: 300;
+        color: rgba(255, 255, 255, 1);
+      }
+      .heading--primary {
+        font-size: 1.999rem;
+      }
+      .heading--secondary {
+        font-size: 1.414rem;
+      }
+      .thumbnail__links {
+        align-self: flex-end;
+        width: 100%;
+      }
+      .thumbnail__links a {
+        font-size: 1rem;
+        color: #fff;
+        &:focus,
+        &:hover {
+          color: rgba(255, 255, 255, 0.5);
+        }
+      }
+      .signup__form {
+        padding: 2.5rem;
+        background: #fafafa;
+      }
+      label {
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        color: #ccc;
+      }
+      .form-control {
+        background-color: transparent;
+        border-top: 0;
+        border-right: 0;
+        border-left: 0;
+        border-radius: 0;
+        &:focus {
+          border-color: #111;
+        }
+      }
+      [type="text"] {
+        color: #111;
+      }
+      [type="password"] {
+        color: #111;
+      }
+      .btn--form {
+        padding: 0.5rem 2.5rem;
+        font-size: 0.95rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        color: #fff;
+        background: #111;
+        border-radius: (35px);
+        &:focus,
+        &:hover {
+          background: lighten(#111, 13%);
+        }
+      }
+      .signup__link {
+        font-size: 0.8rem;
+        font-weight: 600;
+        text-decoration: underline;
+        color: #999;
+        &:focus,
+        &:hover {
+          color: darken(#999, 13%);
+        }
+      }
+    </style> -->
+
+    <style>
+      /* Reset some default styles to improve consistency */
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      /* Set the base font and background for the page */
+      body {
+        font-family: Arial, sans-serif;
+        background: url("train.jpg") no-repeat center center fixed;
+        background-size: cover;
+      }
+
+      /* Center the container vertically */
+      .signup__container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin-left: 0; /* Remove margin from the left */
+        margin-right: auto;
+        margin-top: -13px; /* Center horizontally by setting margin-right to auto */
+        transform: translateX(+20%); /* Shift left by 50% */
+      }
+
+      /* Style the signup form container */
+      .signup__content {
+        display: flex;
+        max-width: 800px;
+      }
+
+      .container__child {
+        flex: 1;
+        padding: 2rem;
+        background-color: #f2b50c; /* Add the desired color here, e.g., #f7f7f7 for a light gray */
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Added slight shadow */
+        display: flex;
+        flex-direction: column;
+        justify-content: center; /* Center content vertically */
+        margin-bottom: -5px; /* Remove border radius overlap */
+      }
+      .signup__thumbnail {
+        border-radius: 10px 0 0 10px;
+      }
+      .signup__form {
+        border-radius: 0 10px 10px 0;
+      }
+
+      /* Style the headings */
+      h1.heading--primary {
+        font-size: 2.5rem;
+        color: #6c63ff;
+        margin-bottom: 2rem; /* Increase margin between the headings */
+        text-align: center;
+        margin-top: -2rem; /* Move the heading closer to the upper margin */
+        line-height: 1.2; /* Adjust line height for better vertical alignment */
+      }
+
+      h2.heading--secondary {
+        font-size: 1.5rem;
+        color: #666666;
+        text-align: center;
+        margin-top: 3rem; /* Increase margin between the headings */
+      }
+
+      /* Style the form elements */
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+
+      label {
+        display: block;
+        font-weight: bold;
+        color: #333333;
+        margin-bottom: 0.5rem;
+      }
+
+      .form-control {
+        width: 100%;
+        padding: 1rem;
+        border: 1px solid #cccccc;
+        border-radius: 4px;
+        background-color: #f2f2f2;
+        color: #333333;
+        font-size: 1rem;
+        transition: border-color 0.3s;
+      }
+
+      .form-control:focus {
+        outline: none;
+        border-color: #6c63ff;
+      }
+
+      /* Style the submit button */
+      button.btn--form {
+        width: 100%;
+        padding: 1rem;
+        font-size: 1rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        color: #ffffff;
+        background: #6c63ff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.2s;
+      }
+
+      button.btn--form:hover {
+        background: #4b46e0;
+      }
+
+      /* Style the login link */
+      a.signup__link {
+        display: inline-block;
+        margin-top: 1rem;
+        text-align: center;
+        color: #6c63ff;
+        text-decoration: none;
+        font-size: 1rem;
+      }
+
+      a.signup__link:hover {
+        color: #4b46e0;
+      }
+
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+
+      label {
+        display: block;
+        font-weight: bold;
+        color: #333333;
+        margin-bottom: 0.5rem;
+      }
+
+      .form-control {
+        width: 100%;
+        padding: 1rem;
+        border: 1px solid #cccccc;
+        border-radius: 4px;
+        background-color: #f2f2f2;
+        color: #333333;
+        font-size: 1rem;
+        transition: border-color 0.3s;
+      }
+
+      .form-control:focus {
+        outline: none;
+        border-color: #6c63ff;
+        box-shadow: 0px 0px 5px rgba(108, 99, 255, 0.5);
+      }
+
+      /* Style the submit button */
+      button.btn--form {
+        width: 100%;
+        padding: 1rem;
+        font-size: 1rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        color: #ffffff;
+        background: #6c63ff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.2s;
+      }
+
+      button.btn--form:hover {
+        background: #4b46e0;
+      }
+
+      /* Style the login link */
+      a.signup__link {
+        display: inline-block;
+        margin-top: 1rem;
+        text-align: center;
+        color: #6c63ff;
+        text-decoration: none;
+        font-size: 1rem;
+      }
+
+      a.signup__link:hover {
+        color: #4b46e0;
+      }
+
+      /* Additional styles to enhance the appearance */
+
+      /* Style the form headings */
+      h1.heading--primary {
+        font-size: 2.5rem;
+        color: #6c63ff;
+        margin-bottom: 1rem;
+        text-align: center;
+      }
+
+      h2.heading--secondary {
+        font-size: 1.5rem;
+        color: #666666;
+        text-align: center;
+      }
+
+      /* Style the form fields on smaller screens */
+      @media (max-width: 600px) {
+        .form-control,
+        button.btn--form,
+        a.signup__link {
+          font-size: 0.9rem;
+          padding: 0.8rem;
+        }
+
+        h1.heading--primary {
+          font-size: 2rem;
+        }
+
+        h2.heading--secondary {
+          font-size: 1.2rem;
+        }
+      }
+
+      /* Style the form on even smaller screens */
+      @media (max-width: 400px) {
+        .form-control,
+        button.btn--form,
+        a.signup__link {
+          font-size: 0.8rem;
+          padding: 0.7rem;
+        }
+
+        h1.heading--primary {
+          font-size: 1.8rem;
+        }
+
+        h2.heading--secondary {
+          font-size: 1rem;
+        }
+      }
+      .form-control {
+        /* Existing styles... */
+        border: 1px solid #cccccc;
+        border-radius: 4px;
+        background-color: #f2f2f2;
+        color: #333333;
+        font-size: 1rem;
+        transition: border-color 0.3s, box-shadow 0.3s; /* Added transition for box-shadow */
+      }
+
+      .form-control:focus {
+        outline: none;
+        border-color: #6c63ff;
+        box-shadow: 0px 0px 5px rgba(108, 99, 255, 0.5); /* Added slight box-shadow on focus */
+      }
+
+      /* Style the submit button */
+      button.btn--form {
+        /* Existing styles... */
+        background: #6c63ff;
+        /* Added transition for background color change on hover */
+        transition: background-color 0.2s;
+      }
+
+      button.btn--form:hover {
+        background: #4b46e0; /* Change background color on hover */
+      }
+      .or-login__container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        margin-top: 20px; /* Add margin to create space between Register button and Or/Login */
+      }
+
+      .or-login__separator {
+        margin: 0 10px;
+        font-size: 1rem;
+        color: #999;
+      }
+
+      .or-login__link {
+        font-size: 1rem;
+        font-weight: 600;
+        text-decoration: underline;
+        color: #6c63ff;
+        transition: color 0.2s;
+      }
+
+      .or-login__link:hover {
+        color: #4b46e0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- <h2>Registration</h2>
+    <form id="submission" onsubmit="return validateForm()">
+      <label>Username:</label>
+      <input
+        type="text"
+        name="username"
+        placeholder="username"
+        required
+      /><br /><br />
+      <label>Name:</label>
+      <input type="text" name="name" placeholder="name" required /><br /><br />
+      <label>Email:</label>
+      <input
+        type="email"
+        name="email"
+        id="email"
+        placeholder="email"
+        required
+      /><br /><br />
+      <label>Password:</label>
+      <input
+        type="password"
+        name="password"
+        id="password"
+        placeholder="password"
+        required
+      /><br /><br />
+      <button type="submit" name="submit">Register</button>
+    </form>
+
+    <h3>Or</h3>
+    <a href="./login.html"><h3>Login</h3></a> -->
+
+    <!-- ------------------------------------------------------ -->
+    <div class="signup__container">
+      <div class="signup__content">
+        <div class="container__child signup__thumbnail">
+          <div class="thumbnail__content text-center">
+            <h1 class="heading--primary">
+              Welcome to Railway Reservation Portal
+            </h1>
+            <h2 class="heading--secondary">
+              Are you ready to book the ticket?
+            </h2>
+          </div>
+          <div class="signup__overlay"></div>
+        </div>
+        <div class="container__child signup__form">
+          <form id="submission" onsubmit="return validateForm()">
+            <div class="form-group">
+              <label for="username">Username</label>
+              <input
+                class="form-control"
+                type="text"
+                name="username"
+                id="username"
+                placeholder="username"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input
+                class="form-control"
+                type="text"
+                name="name"
+                id="name"
+                placeholder="name"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input
+                class="form-control"
+                type="email"
+                name="email"
+                id="email"
+                placeholder="email"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input
+                class="form-control"
+                type="password"
+                name="password"
+                id="password"
+                placeholder="password"
+                required
+              />
+            </div>
+            <div class="m-t-lg">
+              <ul class="list-inline">
+                <button class="btn btn--form" type="submit" name="submit">
+                  Register
+                </button>
+                <div class="m-t-lg or-login__container">
+                  <div class="or-login__separator">Or</div>
+                  <a class="or-login__link" href="./login.html">Login</a>
+                </div>
+              </ul>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- -------------------------------------------------------------- -->
+  </body>
+  <script>
+    function validateForm() {
+      var emailField = document.getElementById("email");
+      var passwordField = document.getElementById("password");
+      var emailRegex = /^[A-Za-z0-9._+%-]+@[A-Za-z0-9.-]+\.[A-Za-z]+$/;
+
+      if (!emailRegex.test(emailField.value)) {
+        alert("Please enter a valid email address.");
+        emailField.focus();
+        return false;
+      }
+
+      if (passwordField.value.length < 5) {
+        alert("Password must be at least 5 characters long.");
+        passwordField.focus();
+        return false;
+      }
+      return true;
+    }
+  </script>
+  <script>
+    let form = document.querySelector("#submission");
+    let inputs = form.querySelectorAll("input");
+    form.onsubmit = (e) => {
+      e.preventDefault();
+      let data = {};
+      for (input of inputs) {
+        data[input.getAttribute("name")] = input.value;
+      }
+
+      if (!validateForm()) {
+        return false;
+      }
+
+      const xhr = new XMLHttpRequest();
+      xhr.open("POST", "/signup");
+      xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+      xhr.onload = function () {
+        if (xhr.status === 200 || xhr.status === 302) {
+          // Redirect to the login page
+          window.location.href = "/login?registered=true";
+        } else if (xhr.status === 400) {
+          // Handle error response
+          const response = JSON.parse(xhr.responseText);
+          alert(response.error);
+        }
+      };
+      xhr.send(JSON.stringify(data));
+    };
+  </script>
+</html>

@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Source and Destination</title>
+    <link rel="stylesheet" href="style/logout.css" />
+
+    <!-- <style>
+      .container {
+        margin: 50px auto;
+        padding: 20px;
+        border: 1px solid gray;
+        border-radius: 10px;
+        width: 400px;
+        box-sizing: border-box;
+      }
+
+      form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+
+      label {
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+
+      input[type="text"] {
+        padding: 5px;
+        border-radius: 5px;
+        border: 1px solid gray;
+        margin-bottom: 20px;
+        width: 300px;
+        font-size: 16px;
+      }
+
+      button[type="submit"] {
+        padding: 10px;
+        border-radius: 5px;
+        border: none;
+        background-color: #0077cc;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+      }
+
+      button[type="submit"]:hover {
+        background-color: #0066b3;
+      }
+
+      a {
+        display: block;
+        font-size: 18px;
+        text-align: center;
+        color: #0077cc;
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+    </style> -->
+
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        background: url("train1.jpg") no-repeat center center fixed;
+        background-size: cover;
+      }
+
+      .login__container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .login__content {
+        display: flex;
+        flex-direction: column;
+        max-width: 800px;
+        max-width: 800px;
+        /* margin: 20px; */
+      }
+      input[type="text"] {
+        width: 100%;
+        padding: 4px 20px;
+        margin: 8px 0;
+        box-sizing: border-box;
+        border-radius: 7px;
+      }
+
+      .container__child {
+        flex: 1;
+        border-radius: 10px;
+        padding: 3rem;
+        background-color: #f2b50c;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 100%;
+      }
+
+      .container__child.login__form {
+        border-radius: 10px;
+        padding: 3rem;
+        background-color: #f2b50c;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        min-height: 300px; /* Use min-height instead of height */
+        width: 400px;
+        flex-grow: 1; /* Allow the container to grow vertically */
+      }
+
+      h1.heading--primary {
+        font-size: 2.5rem;
+        color: #6c63ff;
+        margin-bottom: 1rem;
+        text-align: center;
+      }
+
+      .form-group {
+        margin-bottom: 1.5rem;
+        display: flex;
+        flex-direction: column; /* Set flex-direction to column */
+      }
+
+      label {
+        display: block;
+        font-weight: bold;
+        color: #333333;
+        margin-bottom: 0.2rem;
+        font-size: 18px; /* Increase the font size of the labels */
+      }
+
+      .form-control {
+        width: 100%;
+        padding: 1rem;
+        border: 1px solid #cccccc;
+        border-radius: 10px; /* Added border radius to input fields */
+        background-color: #f2f2f2;
+        color: #333333;
+        font-size: 1rem;
+        transition: border-color 0.3s;
+        height: 50px; /* Increased the height of the input fields */
+      }
+
+      .form-control:focus {
+        outline: none;
+        border-color: #6c63ff;
+      }
+
+      button.btn--form {
+        width: 100%;
+        padding: 0.8rem; /* Decreased the padding of the search button */
+        font-size: 1rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        color: #ffffff;
+        background: #6c63ff;
+        border: none;
+        border-radius: 20px; /* Added border radius to the search button */
+        cursor: pointer;
+        transition: background-color 0.2s;
+      }
+
+      button.btn--form:hover {
+        background: #4b46e0;
+      }
+
+      a.login__link {
+        display: inline-block;
+        margin-top: 1rem;
+        text-align: center;
+        color: #6c63ff;
+        text-decoration: none;
+        font-size: 1rem;
+      }
+
+      a.login__link:hover {
+        color: #4b46e0;
+      }
+
+      .or-login__container {
+        background-color: #f2b50c; /* Add the same yellow background color */
+        padding: 1rem; /* Add padding to separate it from the upper form */
+        border-radius: 10px; /* Add border radius for rounded corners */
+        margin-top: 1rem; /* Add margin to separate it from the upper form */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .or-login__separator {
+        margin: 0.5rem 1rem;
+        color: rgb(19, 19, 19);
+        font-size: 1rem;
+      }
+
+      .or-login__link {
+        color: #6c63ff;
+        font-size: 1.2rem;
+        font-weight: 600;
+        transition: color 0.2s;
+        text-decoration: underline;
+      }
+
+      .or-login__link:hover {
+        color: #4b46e0;
+      }
+
+      .m-t-lg.or-login__container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      #logoutContainer {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+      }
+
+      #logoutContainer button {
+        padding: 0.8rem 1.2rem; /* Increased the padding for the logout button */
+        font-size: 1rem;
+        font-weight: bold;
+        color: #ffffff;
+        background: #6c63ff; /* Changed the background color to blue */
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: background-color 0.2s;
+      }
+
+      #logoutContainer button:hover {
+        background: #0066b3; /* Darker blue on hover */
+      }
+    </style>
+  </head>
+  <body>
+    <div id="logoutContainer">
+      <form action="/logout" method="post">
+        <button type="submit" name="logout">Logout</button>
+      </form>
+    </div>
+    <div class="login__container">
+      <div class="login__content">
+        <div class="container__child login__form">
+          <form action="/showtrains" method="get">
+            <div class="form-group">
+              <label for="src">Source:</label>
+              <input
+                id="src"
+                type="text"
+                name="source"
+                placeholder="Source"
+                required
+                style="height: 50px"
+              />
+            </div>
+            <div class="form-group">
+              <label for="dest">Destination:</label>
+              <input
+                id="dest"
+                type="text"
+                name="destination"
+                placeholder="Destination"
+                required
+                style="height: 50px"
+              />
+            </div>
+            <div class="m-t-lg">
+              <button class="btn btn--form" type="submit" name="search">
+                Search
+              </button>
+            </div>
+          </form>
+        </div>
+        <div class="m-t-lg or-login__container">
+          <div class="or-login__separator">Or</div>
+          <a class="or-login__link" href="/bookuser.html">Book User</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div id="logoutContainer">
+      <form action="/logout" method="post">
+        <button type="submit" name="logout">Logout</button>
+      </form>
+    </div>
+    <div class="container">
+      <form action="/showtrains" method="get">
+        <label>Source :</label>
+        <input
+          id="src"
+          type="text"
+          name="source"
+          placeholder="source"
+          required
+        /><br /><br />
+        <label>Destination :</label>
+        <input
+          id="dest"
+          type="text"
+          name="destination"
+          placeholder="destination"
+          required
+        /><br /><br />
+        <button type="submit" name="search">Search</button>
+      </form>
+
+      <a href="/bookuser.html">Book User</a>
+    </div> -->
+
+    <!-- <script>
+            let form = document.querySelector('form')
+            let ul = document.querySelector("#result")
+            form.onsubmit = (e) => {
+                e.preventDefault();
+                let fields = { 
+                    src : document.querySelector('#src'),
+                    dest : document.querySelector('#dest')
+                }
+                var ajax = new XMLHttpRequest();
+                ajax.open("GET",`/search?source=${fields.src.value}&destination=${fields.dest.value}`, false);
+                ajax.send();
+                form.style.visibility = "hidden"
+                if(ajax.status==300)
+                {
+                    text="No Trains Available";
+                    const li = document.createElement("li")
+                    const textNode = document.createTextNode(text)
+                    li.appendChild(textNode)
+                    ul.appendChild(li);
+                }
+                else
+                {
+                let output = JSON.parse(ajax.responseText);
+                console.log(typeof(output));
+                console.log(ajax.status);
+                for(out of output){
+                    let text = out['s']
+                    const li = document.createElement("li")
+                    const textNode = document.createTextNode(text)
+                    li.appendChild(textNode)
+                    ul.appendChild(li);
+                }
+                }
+            }
+        </script> -->
+  </body>
+</html>

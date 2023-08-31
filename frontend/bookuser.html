@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Book User</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+      }
+
+      body {
+        display: flex;
+        height: 100vh;
+        justify-content: center;
+        align-items: center;
+        background: url("train1.jpg") no-repeat center center fixed;
+        background-size: cover;
+      }
+      .container {
+        width: 100%;
+        max-width: 650px;
+        background: #718b0ad4;
+        padding: 28px;
+        margin: 0 28px;
+        border-radius: 10px;
+        box-shadow: inset -2px 2px 2px white;
+      }
+      .form-title {
+        font-size: 26px;
+        font-weight: 600;
+        text-align: center;
+        padding-bottom: 6px;
+        color: white;
+        text-shadow: 2px 2px 2px black;
+        border-bottom: solid 1px white;
+      }
+      .main-user-info {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding: 20px 0;
+      }
+      .user-input-box:nth-child(2n) {
+        justify-content: end;
+      }
+
+      .user-input-box {
+        display: flex;
+        flex-wrap: wrap;
+        width: 50%;
+        padding-bottom: 15px;
+      }
+      .user-input-box label {
+        width: 95%;
+        color: white;
+        font-size: 20px;
+        font-weight: 400;
+        margin: 5px 0;
+      }
+      .user-input-box input {
+        height: 40px;
+        width: 95%;
+        border-radius: 7px;
+        outline: none;
+        border: 1px solid grey;
+        padding: 0 10px;
+      }
+      .form-submit-btn input {
+        cursor: pointer;
+      }
+      .form-submit-btn input {
+        display: block;
+        width: 100%;
+        margin-top: 10px;
+        font-size: 20px;
+        padding: 10px;
+        border: none;
+        border-radius: 3px;
+        color: rgb(209, 209, 209);
+        background: rgba(63, 114, 76, 0.7);
+      }
+      .form-submit-btn input:hover {
+        background: rgba(56, 204, 93, 0.7);
+        color: rgb(255, 255, 255);
+      }
+      .form-submit-btn {
+        margin-top: 20px;
+        text-align: center;
+      }
+      .btn.btn--form {
+        display: inline-block;
+        padding: 1rem 2rem;
+        font-size: 1rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        color: hwb(0 4% 96%);
+        /* background: #6c63ff; */
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.2s;
+      }
+
+      .btn.btn--form:hover {
+        background: #4b46e0;
+      }
+
+      .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 9999; /* Ensure it's above other elements */
+        background-color: #6c63ff;
+        padding: 18px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center; /* Add this to separate links and logout button */
+      }
+
+      .navbar a {
+        color: white;
+        text-decoration: none;
+        padding: 10px 20px;
+        font-size: 20px;
+        border-radius: 4px;
+        transition: background-color 0.2s;
+      }
+
+      .navbar a:hover {
+        background-color: #4b46e0;
+      }
+
+      /* Style the logout button */
+      .logout-btn {
+        background-color: #6c63ff;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        font-size: 20px;
+        border-radius: 4px;
+        transition: background-color 0.2s;
+      }
+
+      .logout-btn:hover {
+        background-color: #4b46e0;
+      }
+
+      @media (max-width: 600px) {
+        .container {
+          min-width: 280px;
+        }
+        .user-input-box {
+          margin-bottom: 12px;
+          width: 100%;
+        }
+        .user-input-box:nth-child(2n) {
+          justify-content: space-between;
+        }
+        .main-user-info {
+          max-height: 380px;
+          overflow: auto;
+        }
+        .main-user-info::-webkit-scrollbar {
+          width: 0;
+        }
+      }
+
+      /* .book-user-form {
+        background-color: #f5f5f5;
+        border-radius: 4px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        padding: 20px;
+        margin-top: 40px;
+        max-width: 400px;
+        margin: 0 auto;
+      }
+
+      .book-user-form h2 {
+        text-align: center;
+        color: #0077cc;
+        margin-top: 0;
+      }
+
+      .book-user-form .form-group {
+        margin-bottom: 20px;
+      }
+
+      .book-user-form label {
+        display: block;
+        font-size: 18px;
+        color: #333;
+        margin-bottom: 5px;
+      }
+
+      .book-user-form input[type="text"] {
+        padding: 10px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+        font-size: 16px;
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      .book-user-form button[type="submit"] {
+        background-color: #6c63ff;
+        color: #fff;
+        font-size: 18px;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        width: 100%;
+      }
+
+      .book-user-form button[type="submit"]:hover {
+        background-color: #4b46e0;
+      }
+
+      /* Optional: Add more interactivity on focus */
+      /* .book-user-form input[type="text"]:focus {
+        border-color: #6c63ff;
+      }
+
+      .book-user-form button[type="submit"]:focus {
+        outline: none;
+        box-shadow: 0 0 5px rgba(108, 99, 255, 0.3);
+      }
+      .login__container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        padding-top: 0.5px; /* Add some space between navbar and content */
+      /* } */
+      /* .login__content {
+        max-width: 1000px;
+            } */
+
+      /* .container__child.login__form.book-user-form {
+        width: 100%;
+        padding: 3rem 4rem;
+      } */
+
+      /* Increase the gap between "Book User" heading and "Train No" label */
+      /* h1.heading--primary {
+        margin-bottom: 3rem; /* Update this value as needed */
+
+      /* Center the login form horizontally */
+    </style>
+  </head>
+  <body>
+    <!-- <div class="login__container">
+      <div class="login__content">
+        <div class="container__child login__form">
+          <h1 class="heading--primary">Book User</h1>
+          <form id="additional-form">
+            <div class="form-group">
+              <label>Train No :</label>
+              <input
+                class="form-control"
+                id="train_no"
+                type="text"
+                name="train_no"
+                placeholder="train no"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label>Date :</label>
+              <input
+                class="form-control"
+                id="date"
+                type="text"
+                name="date"
+                placeholder="date"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label>Coach :</label>
+              <input
+                class="form-control"
+                id="coach"
+                type="text"
+                name="coach"
+                placeholder="coach"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label>Source :</label>
+              <input
+                class="form-control"
+                id="src"
+                type="text"
+                name="source"
+                placeholder="source"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label>Destination :</label>
+              <input
+                class="form-control"
+                id="dest"
+                type="text"
+                name="destination"
+                placeholder="destination"
+                required
+              />
+            </div>
+            <div class="m-t-lg">
+              <ul class="list-inline">
+                <button
+                  class="btn btn--form"
+                  id="additional"
+                  type="submit"
+                  name="bookuser"
+                >
+                  Book User
+                </button>
+              </ul>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>  -->
+
+    <div class="navbar">
+      <div>
+        <a href="/addpass.html">Add Passenger</a>
+        <a href="/deleteticket.html">Delete Ticket</a>
+        <a href="/showticket">Show Ticket</a>
+      </div>
+      <div>
+        <form action="/logout" method="post">
+          <button class="logout-btn" type="submit" name="logout">Logout</button>
+        </form>
+      </div>
+    </div>
+    <div class="container">
+      <h1 class="form-title">Book User</h1>
+      <form id="additional-form">
+        <div class="main-user-info">
+          <div class="user-input-box">
+            <label>Train No </label>
+            <input
+              id="train_no"
+              type="text"
+              name="train_no"
+              placeholder="Train No"
+              required
+            />
+          </div>
+          <div class="user-input-box">
+            <label>Date </label>
+            <input
+              id="date"
+              type="text"
+              name="date"
+              placeholder="Date"
+              required
+            />
+          </div>
+
+          <div class="user-input-box">
+            <label>Source </label>
+            <input
+              id="src"
+              type="text"
+              name="source"
+              placeholder="Source"
+              required
+            />
+          </div>
+          <div class="user-input-box">
+            <label>Destination </label>
+            <input
+              id="dest"
+              type="text"
+              name="destination"
+              placeholder="Destination"
+              required
+            />
+          </div>
+          <div class="user-input-box">
+            <label>Coach </label>
+            <input
+              id="coach"
+              type="text"
+              name="coach"
+              placeholder="Coach"
+              required
+            />
+          </div>
+        </div>
+        <div class="form-submit-btn">
+          <button
+            class="btn btn--form"
+            id="additional"
+            type="submit"
+            name="bookuser"
+          >
+            Book User
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <!-- <div class="login__container">
+      <div class="login__content">
+        <div class="container__child login__form book-user-form">
+          <h2>Book User</h2>
+          <form id="additional-form">
+            <div class="form-group">
+              <label>Train No :</label>
+              <input
+                id="train_no"
+                type="text"
+                name="train_no"
+                placeholder="Train No"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label>Date :</label>
+              <input
+                id="date"
+                type="text"
+                name="date"
+                placeholder="Date"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label>Coach :</label>
+              <input
+                id="coach"
+                type="text"
+                name="coach"
+                placeholder="Coach"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label>Source :</label>
+              <input
+                id="src"
+                type="text"
+                name="source"
+                placeholder="Source"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label>Destination :</label>
+              <input
+                id="dest"
+                type="text"
+                name="destination"
+                placeholder="Destination"
+                required
+              />
+            </div>
+            <div class="m-t-lg">
+              <ul class="list-inline">
+                <button
+                  class="btn btn--form"
+                  id="additional"
+                  type="submit"
+                  name="bookuser"
+                >
+                  Book User
+                </button>
+              </ul>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div> -->
+
+    <!-- <h2>Book User</h2>
+    <form id="additional-form">
+      <label>Train No :</label>
+      <input
+        id="train_no"
+        type="text"
+        name="train_no"
+        placeholder="train no"
+        required
+      /><br /><br />
+      <label>Date :</label>
+      <input
+        id="date"
+        type="text"
+        name="date"
+        placeholder="date"
+        required
+      /><br /><br />
+      <label>Coach :</label>
+      <input
+        id="coach"
+        type="text"
+        name="coach"
+        placeholder="coach"
+        required
+      /><br /><br />
+      <label>Source :</label>
+      <input
+        id="src"
+        type="text"
+        name="source"
+        placeholder="source"
+        required
+      /><br /><br />
+      <label>Destination :</label>
+      <input
+        id="dest"
+        type="text"
+        name="destination"
+        placeholder="destination"
+        required
+      /><br /><br />
+      <button id="additional" type="submit" name="bookuser">Book User</button>
+    </form> -->
+
+    <script>
+      window.addEventListener("DOMContentLoaded", (event) => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const trainNoParam = urlParams.get("train_no");
+        const dateParam = urlParams.get("date");
+        const sourceParam = urlParams.get("source");
+        const destinationParam = urlParams.get("destination");
+
+        if (trainNoParam && dateParam && sourceParam && destinationParam) {
+          // Fill the input fields with URL parameter values
+          document.getElementById("train_no").value = trainNoParam;
+          document.getElementById("date").value = formatDate(dateParam);
+          document.getElementById("src").value = sourceParam;
+          document.getElementById("dest").value = destinationParam;
+
+          // Disable the input fields
+          document.getElementById("train_no").disabled = true;
+          document.getElementById("date").disabled = true;
+          document.getElementById("src").disabled = true;
+          document.getElementById("dest").disabled = true;
+        }
+      });
+
+      function formatDate(dateString) {
+        const date = new Date(dateString);
+        const day = String(date.getDate()).padStart(2, "0");
+        const month = String(date.getMonth() + 1).padStart(2, "0");
+        const year = date.getFullYear();
+        return `${day}-${month}-${year}`;
+      }
+    </script>
+
+    <script>
+      let form = document.querySelector("#additional-form");
+      let inputs = form.querySelectorAll("input");
+      form.onsubmit = (e) => {
+        e.preventDefault();
+        let data = {};
+        for (input of inputs) {
+          data[input.getAttribute("name")] = input.value;
+        }
+
+        const xhr = new XMLHttpRequest();
+        xhr.open("POST", "/bookuser");
+        xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+        xhr.onload = function () {
+          if (xhr.status === 200) {
+            const response = JSON.parse(xhr.responseText);
+            // Redirect to the login page
+            alert(response.message);
+          } else if (xhr.status === 400) {
+            const response = JSON.parse(xhr.responseText);
+            // Handle error response
+
+            alert(response.error);
+          }
+        };
+        xhr.send(JSON.stringify(data));
+      };
+    </script>
+  </body>
+</html>
