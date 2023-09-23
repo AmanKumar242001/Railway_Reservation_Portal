@@ -357,6 +357,17 @@
             <div class="or-login__separator">Or</div>
             <a class="or-login__link" href="./signup.html">Signup</a>
           </div>
+          <div class="m-t-lg or-login__container">
+            <button
+              class="btn btn--form"
+              type="submit"
+              name="submit"
+              style="background-color: red; color: white"
+              onclick="fillCredentials()"
+            >
+              Get Login Credentials
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -431,6 +442,20 @@
     </script> -->
 
     <script>
+      function fillCredentials() {
+        // Get the username and password input elements
+        var usernameInput = document.getElementById("username");
+        var passwordInput = document.getElementById("password");
+
+        // Set default values for username and password (change these as needed)
+        var defaultUsername = "amanuser";
+        var defaultPassword = "owner";
+
+        // Fill in the input fields with the default values
+        usernameInput.value = defaultUsername;
+        passwordInput.value = defaultPassword;
+      }
+
       function getQueryParam(name) {
         const urlParams = new URLSearchParams(window.location.search);
         return urlParams.get(name);
